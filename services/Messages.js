@@ -27,8 +27,8 @@ module.exports = class Messages {
             don: 'Дон',
             nothing: 'Нету'
         };
-                    // `> Живые игроки **[${gameObject.members.filter(e => e.alive).filter(e => ['mafia', 'don'].includes(e.role)).length}/10]**`
-                    // `> Живая мафия **[${gameObject.members.filter(e => ['mafia', 'don'].includes(e.role) && e.alive).length}/3]**`)
+                    // `> Alive players **[${gameObject.members.filter(e => e.alive).filter(e => ['mafia', 'don'].includes(e.role)).length}/10]**`
+                    // `> Alive mafia **[${gameObject.members.filter(e => ['mafia', 'don'].includes(e.role) && e.alive).length}/3]**`)
         return {
             content: `<@!${gameObject.owner}>`,
             embeds:[{

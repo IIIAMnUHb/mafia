@@ -13,16 +13,16 @@ module.exports = class Database {
         return this;
     }
     /**
-     * Создаёт событие игры Mafia
+     * Creates a Mafia game event
      * @param {Object} params
-     * @param {string} params.mode Тип мафии
-     * @param {Object} params.modeData Данные которые нужны моду
-     * @param {string} params.owner        ID владельца
-     * @param {'picks'|'game'|'final'} params.state  Состояние игры
+     * @param {string} params.mode Mafia type
+     * @param {Object} params.modeData Data required by the mode
+     * @param {string} params.owner        Owner ID
+     * @param {'picks'|'game'|'final'} params.state  Game state
      * @param {Array<{id: string, role?: string, foll?: number, warns?: number, alive?: boolean}>} params.members
-     * @param {'day'|'night'|'maintenance'} params.time  Время суток
+     * @param {'day'|'night'|'maintenance'} params.time  Time of day
      * @param {{ text: string, voice?: string, thread?: string, mafia?: string, threadMessage?: string, chatMessage?: string }} params.channels
-     * @returns {Promise<Object>} Результат insertOne
+     * @returns {Promise<Object>} insertOne result
      */
     async createMafia({ mode, modeOptions, owner, state, members, server, time, channels }) {
         const events = this.db.collection('events');
@@ -70,10 +70,10 @@ module.exports = class Database {
         await events.deleteOne({ _id })
     }
     /**
-     * Дает свободный сервер
+     * Returns a free server
      * @returns {Promise<{
      *  _id: string, roles: Array<string>, status: 'allocated'|'unallocated', name: string
-     * }|null>} Результат insertOne
+     * }|null>} insertOne result
      */
     async getFreeServer() {
         const servers = this.db.collection('servers');
@@ -116,14 +116,14 @@ module.exports = class Database {
         return await servers.countDocuments({ status: 'notallocated' });
     }
     /**
-     * Создаёт голосование
+     * Creates a vote
      * @param {Object} params
-     * @param {string} params.mafia        ID игры
-     * @param {'voting'|'finished'|'waiting'} params.state  Состояние игры
+     * @param {string} params.mafia        Game ID
+     * @param {'voting'|'finished'|'waiting'} params.state  Game state
      * @param {Array<number>} params.candidates
      * @param {Array<{id:number, voteFor:number}>} params.votes
      * @param {{ ownerMenu:string, activeVote:string|null }} params.messages
-     * @returns {Promise<Object>} Результат insertOne
+     * @returns {Promise<Object>} insertOne result
      */
     async createVote({ mafia, state, candidates, votes, messages }) {
         const vote = this.db.collection('votes');

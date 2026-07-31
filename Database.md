@@ -1,40 +1,40 @@
-# База данных
+# Database
 
 ## `mafia`
 
-Содержит следующие коллекции:
+Contains the following collections:
 
 ```text
 mafia
-├── events    # Все активные игры
-├── servers   # Серверы мафии
-└── votes     # Голосования за кик
+├── events    # All active games
+├── servers   # Mafia servers
+└── votes     # Kick votes
 ```
 
-## Структура
+## Structure
 
 > [!IMPORTANT]
-> Вручную создаются **только** документы в коллекции `servers`.
-> Коллекции `events` и `votes` создаются и обновляются автоматически.
+> Only documents in the `servers` collection are created manually.
+> The `events` and `votes` collections are created and updated automatically.
 
 ### `servers`
 
 ```js
 {
     _id: "GUILD_ID",
-    name: "Название сервера",
+    name: "Server name",
     status: "notallocated",
     roles: [
-        "ROLE_ID ведущего",
-        "ROLE_ID дона",
-        "ROLE_ID мафии"
+        "ROLE_ID of host",
+        "ROLE_ID of don",
+        "ROLE_ID of mafia"
     ]
 }
 ```
 
-| Поле     | Тип        | Описание                                       |
+| Field    | Type       | Description                                    |
 | :------- | :--------- | :--------------------------------------------- |
-| `_id`    | `string`   | ID Discord-сервера (`GUILD_ID`).               |
-| `name`   | `string`   | Название сервера (может быть любым).           |
-| `status` | `string`   | Статус сервера. По умолчанию — `notallocated`. |
-| `roles`  | `string[]` | Массив ID ролей, используемых системой.        |
+| `_id`    | `string`   | Discord server ID (`GUILD_ID`).                |
+| `name`   | `string`   | Server name (can be anything).                 |
+| `status` | `string`   | Server status. Defaults to `notallocated`.     |
+| `roles`  | `string[]` | Array of role IDs used by the system.          |

@@ -1,6 +1,6 @@
 # MafiaBot
-Бот для проведения ивента Мафия в Discord.
+A bot for running Mafia events in Discord.
 
-[Как правильно настроить базу данных](./Database.md)
+[How to properly configure the database](./Database.md)
 
-Бот построен на Node.js + Mongodb
+The bot is built on Node.js + MongoDB

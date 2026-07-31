@@ -1,15 +1,15 @@
 const { PermissionsBitField } = require("discord.js");
 // config.js
 module.exports = {
-    token: 'MTA2MzQ2NDc1NzUwNTU2ODg1OQ.-----', // Токен бота
+    token: 'MTA2MzQ2NDc1NzUwNTU2ODg1OQ.-----', // Bot token
     config: {
-        logs: '11111111111111111111', // Логи проведения мафий
-        // techLogs: ['WebhookId', 'WebhookToken'] - для технических логов формата JSON
-        use: ['11111111111111111111'], // Доступ к созданию и ведению мафии
-        adm: ['11111111111111111111'], // Доступ к /mafia admin
-        category: '11111111111111111111', // Категория в которой будут создаватся каналы
-        guild: '11111111111111111111', // Сервер на котором проводится мафия
-        restrictedRoles: [], // Запрещенные к посещению мафии роли
+        logs: '11111111111111111111', // Mafia session logs
+        // techLogs: ['WebhookId', 'WebhookToken'] - for technical logs in JSON format
+        use: ['11111111111111111111'], // Access to creating and hosting mafia
+        adm: ['11111111111111111111'], // Access to /mafia admin
+        category: '11111111111111111111', // Category in which channels will be created
+        guild: '11111111111111111111', // Server on which mafia is hosted
+        restrictedRoles: [], // Roles that are forbidden from joining mafia
         slotIcons: [
             "<:1_:11111111111111111111>", // 01
             "<:2_:11111111111111111111>", // 02
@@ -21,14 +21,14 @@ module.exports = {
             "<:8_:11111111111111111111>", // 08
             "<:9_:11111111111111111111>", // 09
             "<:10:11111111111111111111>", // 10
-            "<:empty:11111111111111111111>" // слот для неигроков
+            "<:empty:11111111111111111111>" // slot for non-players
         ],
-        mafiaGuilds: [ // Айди серверов мафии
+        mafiaGuilds: [ // Mafia server IDs
             '11111111111111111111'
         ],
-        afterGame: '11111111111111111111', // После-игорный канал. Все ползователи будут перемещены в него после игры
+        afterGame: '11111111111111111111', // Post-game channel. All users will be moved to it after the game
         permissions: {
-            voice: [ // Права на голосовой канал при создании
+            voice: [ // Voice channel permissions on creation
                 {
                     id: '11111111111111111111',
                     allow: [
@@ -76,7 +76,7 @@ module.exports = {
                     ]
                 }
             ],
-            text: [ // Права на текстовый канал при создании
+            text: [ // Text channel permissions on creation
                 {
                     id: '11111111111111111111',
                     allow: [
@@ -105,14 +105,14 @@ module.exports = {
                     ]
                 }
             ],
-            player: [ // Вариативные права игрока во время игры
-                { // Текстовый днём | player[0]
+            player: [ // Variable player permissions during the game
+                { // Text, daytime | player[0]
                     allow: [
                         'ViewChannel',
                         'SendMessages'
                     ],
                 },
-                { // Текстовый ночью | player[1]
+                { // Text, nighttime | player[1]
                     allow: [
                         'ViewChannel',
                     ],
@@ -120,7 +120,7 @@ module.exports = {
                         'SendMessages',
                     ]
                 },
-                { // Голосовой днём | player[2]
+                { // Voice, daytime | player[2]
                     allow: [
                         'ViewChannel',
                         'Speak',
@@ -129,7 +129,7 @@ module.exports = {
                         'SendMessages'
                     ]
                 },
-                { // Голосовой ночью | player[3]
+                { // Voice, nighttime | player[3]
                     allow: [
                         'ViewChannel',
                     ],
@@ -140,10 +140,10 @@ module.exports = {
                 }
             ]
         },
-        messages: { // Поиск игроков, заданное сообщение.
-            pingRole: '<@&11111111111111111111> Заходите на мафию +$count', // Упоминание роли при недоборе участников | $count - количество которого не хватает
-            pingMembers: 'Игра начинается. Зайдите в голосовой канал $channel\n$pings' // Упоминание участников при запуске | $channel - канал мафии | $pings - пинги всех участников через ", "
+        messages: { // Player search, preset message.
+            pingRole: '<@&11111111111111111111> Заходите на мафию +$count', // Role mention when short on players | $count - number of players missing
+            pingMembers: 'Игра начинается. Зайдите в голосовой канал $channel\n$pings' // Player mentions on launch | $channel - mafia channel | $pings - mentions of all players separated by ", "
         }
     },
-    database: 'mongodb://127.0.0.1:27017/?directConnection=true&serverSelectionTimeoutMS=2000&appName=mongosh+2.1.3' // Подключение к БД. Структуру смотри в Database.md
+    database: 'mongodb://127.0.0.1:27017/?directConnection=true&serverSelectionTimeoutMS=2000&appName=mongosh+2.1.3' // DB connection. See structure in Database.md
 }
