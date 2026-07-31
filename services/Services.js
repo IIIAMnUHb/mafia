@@ -4,7 +4,7 @@ const Functions = require("./Functions");
 const Messages = require("./Messages");
 
 class Services {
-    init() {
+    async init() {
         this.database = await new Database(database).init();
         this.messages = new Messages();
         this.functions = new Functions();
