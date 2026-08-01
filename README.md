@@ -11,7 +11,7 @@ Built on **Node.js**, **discord.js v14**, and **MongoDB**.
 
 - Multiple game modes: **City**, **London**, **Newbies**, **Web**.
 - Automatic allocation of a free Discord server from a pool for each game.
-- Player registration via reactions and buttons.
+- Player registration via buttons.
 - Role management (host, don, mafia, doctor, commissar, civilian).
 - Day/night state machine with per-phase channel permissions.
 - Voting system with kick votes and candidate menus.
@@ -39,7 +39,6 @@ mafia/
 ├── index.js              # Entry point — boots the client, loads events, logs in
 ├── config.js             # Local config (token, IDs, permissions, DB URL) — gitignored
 ├── config_example.js     # Template for config.js
-├── serversConfig.json    # Static per-server metadata
 ├── package.json          # Dependencies and metadata
 │
 ├── clases/               # Base classes
